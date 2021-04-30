@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Row, Col } from 'antd';
 
+const { Search } = Input;
 interface TodoAddprops {
   handleClickAdd: (value: string) => void;
 }
@@ -9,51 +10,42 @@ type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
   const [form] = Form.useForm();
-  const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
 
   const onSubmit = (values: { title: string }) => {
     handleClickAdd(values.title);
   };
 
-  // const inputTextHandler = (e) => {
-  //   // console.log(e.target.value);
-  //   setInputText(e.target.value);
-  // };
-
-  // const submitTodoHandler = (e) => {
-  //   e.preventDefault();
-  //   setTodos([
-  //     ...todos,
-  //     { text: inputText, completed: false, id: Math.random() * 1000 },
-  //   ]);
-  //   setInputText('');
-  // };
-
-  // const statusHandler = (e) => {
-  //   setStatus(e.target.value);
-  //   // console.log(e.target.value);
-  // };
-
   return (
     <>
       <Form
         onFinish={onSubmit}
-        layout={formLayout}
         form={form}
-        initialValues={{ layout: formLayout }}
+        layout='horizontal'
+        className='my-5 p-1.5'
       >
-        <Form.Item label='Input' name='title'>
-          <Input placeholder='input todo' />
-        </Form.Item>
-
-        <Form.Item>
-          <Button type='primary' htmlType='submit'>
-            Add
-          </Button>
-        </Form.Item>
+        <Row gutter={20}>
+          <Col xs={24} sm={24} md={17} lg={19} xl={20}>
+            <Form.Item
+              name='title'
+              rules={[{ required: true, message: 'This field is Todo' }]}
+            >
+              <Input placeholder='Input todo list...' />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={24} md={7} lg={5} xl={4}>
+            <Button type='primary' htmlType='submit' block>
+              Add todo
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </>
   );
 };
 
 export default AddTodo;
+
+{/* <Row gutter={[8, 8]}>
+  <Col span={12} />
+  <Col span={12} />
+</Row>; */}
