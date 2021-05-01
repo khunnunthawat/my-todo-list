@@ -28,33 +28,6 @@ const ListTodo = () => {
 
   return (
     <>
-      {todos.map((todo: TodoProps) => {
-        return (
-          <Modal
-            key={todo.id}
-            title='Edit Todo'
-            visible={modalEdit}
-            onCancel={handleClickCancel}
-            footer={[
-              <Button type='primary' key='submit'>
-                Add
-              </Button>,
-            ]}
-          >
-            <Form
-              onFinish={handleClickEdit}
-              layout='vertical'
-            >
-              <Form.Item name='id'>
-                <Input placeholder='Enter text' type='hidden' />
-              </Form.Item>
-              <Form.Item label=' ' name='title'>
-                <Input placeholder='Enter text' />
-              </Form.Item>
-            </Form>
-          </Modal>
-        );
-      })}
 
       {todos.map((todo: TodoProps) => {
         return (
@@ -80,6 +53,26 @@ const ListTodo = () => {
               >
                 <p>{todo.value}</p>
               </Card>
+              <Modal
+                key={todo.id}
+                title='Edit Todo'
+                visible={modalEdit}
+                onCancel={handleClickCancel}
+                footer={[
+                  <Button type='primary' key='submit'>
+                    Add
+                  </Button>,
+                ]}
+              >
+                <Form onFinish={handleClickEdit} layout='vertical'>
+                  <Form.Item label=' ' name='title'>
+                    <Input placeholder='Enter text' />
+                  </Form.Item>
+                  <Form.Item name='id'>
+                    <Input placeholder='Enter text' type='hidden' />
+                  </Form.Item>
+                </Form>
+              </Modal>
             </Col>
           </Row>
         );
