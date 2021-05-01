@@ -5,9 +5,11 @@ import { RecoilRoot } from 'recoil';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <Component {...pageProps} />
-    </RecoilRoot>
+    <div className='w-full min-h-full flex max-w-2xl mx-auto p-5'>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </div>
   );
 }
 

@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'antd';
-import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
+import { DeleteTwoTone, EditTwoTone, CheckCircleTwoTone } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState } from 'recoil';
 import { todoState } from './recoil/atom';
 
-// interface Todoprops {
-//   id: number;
-//   status: boolean;
-//   value: string;
-// }
-
-const AddTodo = ({ todo }: any) => {
+const ListTodo = () => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
 
-  const handleClickDelete = function () {
+  const handleClickDelete = function (todo: TodoProps) {
     if (todos.length > 0) {
-      setTodos(todos.filter((todos) => todo.id !== todo.id));
+      setTodos(todos.filter((widget) => widget.id !== todo.id));
     }
     setTodos([]);
   };
@@ -32,12 +26,13 @@ const AddTodo = ({ todo }: any) => {
                 key={todo.id}
                 style={{ width: 500, marginTop: 16 }}
                 actions={[
+                  <CheckCircleTwoTone key='check' twoToneColor='#10B981' />,
+                  <EditTwoTone key='edit' twoToneColor='#057ADF' />,
                   <DeleteTwoTone
                     key='delete'
-                    onClick={() => handleClickDelete}
+                    onClick={() => handleClickDelete(todo)}
                     twoToneColor='#ef4444'
                   />,
-                  <EditTwoTone key='edit' twoToneColor='#057ADF' />,
                 ]}
               >
                 <p>{todo.value}</p>
@@ -50,4 +45,9 @@ const AddTodo = ({ todo }: any) => {
   );
 };
 
-export default AddTodo;
+export default ListTodo;
+
+{/* <button className='px-4 py-1 text-white bg-blue-600 hover:bg-gray-900 focus:outline-none rounded-md'>
+  BTN
+</button>; */}
+

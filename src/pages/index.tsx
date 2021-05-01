@@ -17,7 +17,6 @@ import { totalState } from '@/components/recoil/selector';
 const { Content } = Layout;
 
 const Home = () => {
-
   // const [todo, setTodo] = useState<Todoprops[]|[]>([]);
   const [todos, setTodos] = useRecoilState(todoState); //atom
   const totalTodos = useRecoilValue(totalState); //selector
@@ -27,52 +26,49 @@ const Home = () => {
     const data = {
       id,
       status: false,
-      value
+      value,
     };
     setTodos([...todos, data]);
   };
-  
+
   console.log(todos);
-  
+
   return (
     <>
       <Head>
         <title>Daytech Todo List</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <Layout className='layout'>
-        <Content style={{ padding: '20px 20px' }}>
-          <div className='h-full'>
-            <Row
-              justify='center'
-              align='middle'
-              gutter={[0, 20]}
-              className='my-2'
-            >
-              <Col span={24}>
-                <PageHeader title='Daytech Todo List' />
-              </Col>
+        <Content style={{ background: '#ffffff' }}>
+          <Row
+            justify='center'
+            align='middle'
+            gutter={[0, 20]}
+            className='my-2'
+          >
+            <Col span={24}>
+              <PageHeader title='Daytech Todo List' />
+            </Col>
 
-              <Col span={24}>
-                <Card title='Create a new todo'>
-                  <AddTodo handleClickAdd={handleClickAdd} />
-                </Card>
-              </Col>
+            <Col span={24}>
+              <Card title='Create a new todo'>
+                <AddTodo handleClickAdd={handleClickAdd} />
+              </Card>
+            </Col>
 
-              <Col span={24}>
-                <Card title='Search todo'>
-                  <SearchTodo handleClickAdd={handleClickAdd} />
-                </Card>
-              </Col>
+            <Col span={24}>
+              <Card title='Search todo'>
+                <SearchTodo handleClickAdd={handleClickAdd} />
+              </Card>
+            </Col>
 
-              <Col span={24}>
-                <Card title='Todo List'>
-                  <ListTodo />
-                </Card>
-              </Col>
-            </Row>
-          </div>
+            <Col span={24}>
+              <Card title='Todo List'>
+                <ListTodo />
+              </Card>
+            </Col>
+          </Row>
         </Content>
       </Layout>
     </>
@@ -82,4 +78,6 @@ const Home = () => {
 export default Home;
 
 // className='flex flex-col items-center justify-center py-2'
-//Create a new todo
+// Create a new todo
+// className='w-100 max-w-4xl mx-auto p-5'
+// className='w-full h-screen max-h-screen min-w-full'
