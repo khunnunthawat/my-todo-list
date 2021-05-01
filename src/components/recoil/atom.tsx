@@ -10,3 +10,8 @@ export const todoState = atom<TodoProps[]>({
   key: 'todo',
   default: []
 });
+
+export const editState = atom({
+  key: 'edit',
+  default: false,
+});

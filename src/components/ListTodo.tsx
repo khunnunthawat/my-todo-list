@@ -13,6 +13,7 @@ const ListTodo = () => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useState(false);
+  const [form] = Form.useForm();
 
   const handleClickDelete = function (todo: TodoProps) {
     if (todos.length > 0) {
@@ -24,11 +25,13 @@ const ListTodo = () => {
     setModalEdit(false);
   };
 
-  const handleClickEdit = () => {};
+  const handleClickEdit = (values: { title: string; id: number }) => {
+    setModalEdit(false);
+    console.log(values);
+  };
 
   return (
     <>
-
       {todos.map((todo: TodoProps) => {
         return (
           <Row key={todo.id} justify='center' gutter={[0, 20]}>
@@ -41,6 +44,10 @@ const ListTodo = () => {
                     key='edit'
                     onClick={() => {
                       setModalEdit(true);
+                      form.setFieldsValue({
+                        title: todo.value,
+                        id: todo.id,
+                      });
                     }}
                     twoToneColor='#057ADF'
                   />,
@@ -54,17 +61,27 @@ const ListTodo = () => {
                 <p>{todo.value}</p>
               </Card>
               <Modal
-                key={todo.id}
                 title='Edit Todo'
                 visible={modalEdit}
                 onCancel={handleClickCancel}
                 footer={[
-                  <Button type='primary' key='submit'>
+                  <Button
+                    form='myForm'
+                    type='primary'
+                    key='submit'
+                    htmlType='submit'
+                  >
                     Add
                   </Button>,
                 ]}
               >
-                <Form onFinish={handleClickEdit} layout='vertical'>
+                <Form
+                  onFinish={handleClickEdit}
+                  form={form}
+                  id='myForm'
+                  layout='vertical'
+                  initialValues={{ remember: todo.value }}
+                >
                   <Form.Item label=' ' name='title'>
                     <Input placeholder='Enter text' />
                   </Form.Item>
