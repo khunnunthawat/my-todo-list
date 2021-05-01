@@ -31,6 +31,13 @@ const Home = () => {
     setTodos([...todos, data]);
   };
 
+  // const handleClickDelete = function (todo: TodoProps) {
+  //   if (todos.length > 0) {
+  //     setTodos(todos.filter((todo) => todo.id !== todo.id));
+  //   }
+  //   setTodos([]);
+  // };
+
   console.log(todos);
 
   return (
@@ -58,15 +65,17 @@ const Home = () => {
             </Col>
 
             <Col span={24}>
-              <Card title='Search todo'>
+              <div className='my-2.5'>
+                <h1 className='font-medium text-base'>Search todo</h1>
                 <SearchTodo handleClickAdd={handleClickAdd} />
-              </Card>
+              </div>
             </Col>
 
             <Col span={24}>
-              <Card title='Todo List'>
+              <div className='my-2.5'>
+                <h1 className='font-medium text-base'>Todo List</h1>
                 <ListTodo />
-              </Card>
+              </div>
             </Col>
           </Row>
         </Content>
