@@ -9,11 +9,15 @@ import { TodoProps } from '@/components/types/index';
 import { useRecoilState } from 'recoil';
 import { todoState } from './recoil/atom';
 
-const ListTodo = () => {
+const ListTodo = ({ onEdit }: any) => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useState(false);
   const [form] = Form.useForm();
+
+  const handleClickCancel = () => {
+    setModalEdit(false);
+  };
 
   const handleClickDelete = function (todo: TodoProps) {
     if (todos.length > 0) {
@@ -21,13 +25,10 @@ const ListTodo = () => {
     }
   };
 
-  const handleClickCancel = () => {
-    setModalEdit(false);
-  };
-
   const handleClickEdit = (values: { title: string; id: number }) => {
     setModalEdit(false);
-    console.log(values);
+    onEdit(values.id, values.title);
+    // console.log(values.id + values.title);
   };
 
   return (

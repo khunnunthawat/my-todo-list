@@ -31,12 +31,18 @@ const Home = () => {
     setTodos([...todos, data]);
   };
 
-  // const handleClickDelete = function (todo: TodoProps) {
-  //   if (todos.length > 0) {
-  //     setTodos(todos.filter((todo) => todo.id !== todo.id));
-  //   }
-  //   setTodos([]);
-  // };
+  const handleClickEdit = (newId: number, newValue: string) => {
+    let newEditTodo = [];
+    todos.map((data) => {
+      if (data.id === newId) {
+        data.value = newValue;
+        // return newId;
+      }
+      newEditTodo.push(data);
+    });
+
+    setTodos(newEditTodo);
+  };
 
   console.log(todos);
 
@@ -74,7 +80,7 @@ const Home = () => {
             <Col span={24}>
               <div className='my-2.5'>
                 <h1 className='font-medium text-base'>Todo List</h1>
-                <ListTodo />
+                <ListTodo onEdit={handleClickEdit} />
               </div>
             </Col>
           </Row>
