@@ -8,6 +8,7 @@ import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState } from '@/components/recoil/atom';
 import { totalState } from '@/components/recoil/selector';
+import _ from 'lodash';
 // interface Todoprops {
 //   id: number,
 //   status: boolean,
@@ -32,19 +33,22 @@ const Home = () => {
   };
 
   const handleClickEdit = (newId: number, newValue: string) => {
-    let newEditTodo = [];
-    todos.map((data) => {
+    const todoT = _.cloneDeep(todos);
+    const newData = todoT.map((data) => {
       if (data.id === newId) {
         data.value = newValue;
-        // return newId;
       }
-      newEditTodo.push(data);
+      return data;
     });
-
-    setTodos(newEditTodo);
+    setTodos(newData);
+    //   if (data.id === newId) {
+    //     data.value = newValue;
+    //     // return newId;
+    //   }
+    //   return data;
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <>

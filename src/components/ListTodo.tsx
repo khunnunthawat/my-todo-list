@@ -4,15 +4,16 @@ import {
   DeleteTwoTone,
   EditTwoTone,
   CheckCircleTwoTone,
+  CheckCircleOutlined,
 } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState } from 'recoil';
-import { todoState } from './recoil/atom';
+import { todoState, editState } from './recoil/atom';
 
 const ListTodo = ({ onEdit }: any) => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
-  const [modalEdit, setModalEdit] = useState(false);
+  const [modalEdit, setModalEdit] = useRecoilState(editState);
   const [form] = Form.useForm();
 
   const handleClickCancel = () => {
@@ -40,7 +41,7 @@ const ListTodo = ({ onEdit }: any) => {
               <Card
                 style={{ width: 500, marginTop: 16 }}
                 actions={[
-                  <CheckCircleTwoTone key='check' twoToneColor='#10B981' />,
+                  <CheckCircleOutlined key='check' />,
                   <EditTwoTone
                     key='edit'
                     onClick={() => {
@@ -61,37 +62,38 @@ const ListTodo = ({ onEdit }: any) => {
               >
                 <p>{todo.value}</p>
               </Card>
-              <Modal
-                title='Edit Todo'
-                visible={modalEdit}
-                onCancel={handleClickCancel}
-                footer={[
-                  <Button
-                    form='myForm'
-                    type='primary'
-                    key='submit'
-                    htmlType='submit'
-                  >
-                    Add
-                  </Button>,
-                ]}
-              >
-                <Form
-                  onFinish={handleClickEdit}
-                  form={form}
-                  id='myForm'
-                  layout='vertical'
-                  initialValues={{ remember: todo.value }}
-                >
-                  <Form.Item name='id'>
-                    <Input type='hidden' />
-                  </Form.Item>
-                  <Form.Item name='title'>
-                    <Input placeholder='Edit text todo' />
-                  </Form.Item>
-                </Form>
-              </Modal>
             </Col>
+            <Modal
+              key={todo.id}
+              title='Edit Todo'
+              visible={modalEdit}
+              onCancel={handleClickCancel}
+              footer={[
+                <Button
+                  form='myForm'
+                  type='primary'
+                  key='submit'
+                  htmlType='submit'
+                >
+                  Add
+                </Button>,
+              ]}
+            >
+              <Form
+                onFinish={handleClickEdit}
+                form={form}
+                id='myForm'
+                layout='vertical'
+                initialValues={{ remember: todo.value }}
+              >
+                <Form.Item name='id'>
+                  <Input type='hidden' />
+                </Form.Item>
+                <Form.Item name='title'>
+                  <Input placeholder='Edit text todo' />
+                </Form.Item>
+              </Form>
+            </Modal>
           </Row>
         );
       })}
