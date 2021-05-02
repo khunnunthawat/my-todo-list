@@ -7,16 +7,16 @@ import {
   CheckCircleOutlined,
 } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, editState } from './recoil/atom';
-import { todoSearch } from '@/components/recoil/selector';
+import { todoSearchState } from '@/components/recoil/selector';
 
 const ListTodo = ({ onEdit }: any) => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
-  const searchTodoList = useRecoilState(todoSearch);
   const [modalEdit, setModalEdit] = useRecoilState(editState);
   const [form] = Form.useForm();
+  const searchTodoList = useRecoilValue(todoSearchState);
 
   const handleClickCancel = () => {
     setModalEdit(false);
@@ -38,34 +38,7 @@ const ListTodo = ({ onEdit }: any) => {
     <>
       {todos.map((todo: TodoProps) => {
         return (
-          <Row key={todo.id} justify='center' gutter={[0, 20]}>
-            <Col>
-              <Card
-                style={{ width: 500, marginTop: 16 }}
-                actions={[
-                  <CheckCircleOutlined key='check' />,
-                  <EditTwoTone
-                    key='edit'
-                    onClick={() => {
-                      setModalEdit(true);
-                      form.setFieldsValue({
-                        title: todo.value,
-                        id: todo.id,
-                      });
-                    }}
-                    twoToneColor='#057ADF'
-                  />,
-                  <DeleteTwoTone
-                    key='delete'
-                    onClick={() => handleClickDelete(todo)}
-                    twoToneColor='#ef4444'
-                  />,
-                ]}
-              >
-                <p>{todo.value}</p>
-              </Card>
-            </Col>
-            <Modal
+          <Modal
               key={todo.id}
               title='Edit Todo'
               visible={modalEdit}
@@ -96,7 +69,6 @@ const ListTodo = ({ onEdit }: any) => {
                 </Form.Item>
               </Form>
             </Modal>
-          </Row>
         );
       })}
 
@@ -129,37 +101,6 @@ const ListTodo = ({ onEdit }: any) => {
                 <p>{todo.value}</p>
               </Card>
             </Col>
-            <Modal
-              key={todo.id}
-              title='Edit Todo'
-              visible={modalEdit}
-              onCancel={handleClickCancel}
-              footer={[
-                <Button
-                  form='myForm'
-                  type='primary'
-                  key='submit'
-                  htmlType='submit'
-                >
-                  Add
-                </Button>,
-              ]}
-            >
-              <Form
-                onFinish={handleClickEdit}
-                form={form}
-                id='myForm'
-                layout='vertical'
-                initialValues={{ remember: todo.value }}
-              >
-                <Form.Item name='id'>
-                  <Input type='hidden' />
-                </Form.Item>
-                <Form.Item name='title'>
-                  <Input placeholder='Edit text todo' />
-                </Form.Item>
-              </Form>
-            </Modal>
           </Row>
         );
       })}

@@ -7,7 +7,7 @@ import ListTodo from '@/components/ListTodo';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, slectState, searchState } from '@/components/recoil/atom';
-import { totalState, todoSearch } from '@/components/recoil/selector';
+import { totalState } from '@/components/recoil/selector';
 import _ from 'lodash';
 // interface Todoprops {
 //   id: number,
@@ -23,7 +23,6 @@ const Home = () => {
   const totalTodos = useRecoilValue(totalState); //selector
   const [select, setSelect] = useRecoilState(slectState);
   const [search, setSearch] = useRecoilState(searchState);
-  const searchTodoList = useRecoilValue(todoSearch);
 
 
   const { Option } = Select;

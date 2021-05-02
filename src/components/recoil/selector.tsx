@@ -18,12 +18,12 @@ export const totalState = selector({
   },
 });
 
-export const todoSearch = selector({
-  key: 'searchtodo',
+export const todoSearchState = selector({
+  key: 'todoSearch',
   get: ({ get }) => {
     const todoList = get(todoState);
     const todoSearch = get(searchState);
-    let searchTodo;
+    let searchTodo = todoList;
     if (todoSearch !== '') {
       searchTodo = todoList.filter((todo) => {
         return todo.value.includes(todoSearch); // includes คำไหนที่ค้นหาจะนำมาโชว์
