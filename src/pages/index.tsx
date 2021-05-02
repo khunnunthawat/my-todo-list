@@ -1,21 +1,17 @@
 import Head from 'next/head';
-import { Layout, Row, Col, Card, PageHeader, Select } from 'antd';
+import { Layout, Row, Col, Card, Typography, Select } from 'antd';
 import React, { useState } from 'react';
-import AddTodo from '@/components/AddTodo';
-import SearchTodo from '@/components/SearchTodo';
-import ListTodo from '@/components/ListTodo';
+import { AddTodo } from '@/components/AddTodo';
+import { SearchTodo } from '@/components/SearchTodo';
+import { ListTodo } from '@/components/ListTodo';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, slectState, searchState } from '@/components/recoil/atom';
 import { totalState } from '@/components/recoil/selector';
 import _ from 'lodash';
-// interface Todoprops {
-//   id: number,
-//   status: boolean,
-//   value: string
-// }
 
 const { Content } = Layout;
+const { Title } = Typography;
 
 const Home = () => {
   // const [todo, setTodo] = useState<Todoprops[]|[]>([]);
@@ -46,27 +42,35 @@ const Home = () => {
       return data;
     });
     setTodos(newData);
-    //   if (data.id === newId) {
-    //     data.value = newValue;
-    //     // return newId;
-    //   }
-    //   return data;
   };
 
-  function handleSearch(value: string) {
-    console.log("xxx" + value);
+  function handleClickSearch(value: string) {
     setSearch(value);
     if (value === '') {
       setSearch('');
     }
-  }
+  };
+
+  const handleClickCheck = (todo: TodoProps) => {
+    if (todos.length > 0) {
+      setTodos(
+        todos.map((item) => {
+          if (item.id === todo.id) {
+            return {
+              ...item,
+              completed: !item.status,
+            };
+          }
+          return item;
+        })
+      );
+    }
+  };
 
   function handleChange(value: string) {
     console.log(`selected ${value}`);
     setSelect(value);
-  }
-
-  // console.log(todos);
+  };
 
   return (
     <>
@@ -78,7 +82,7 @@ const Home = () => {
         <Content style={{ background: '#ffffff' }}>
           <Row justify='center' align='middle' gutter={[0, 20]}>
             <Col>
-              <PageHeader title='Daytech Todo List' />
+              <Title level={4}>Daytech Todo List Title</Title>
             </Col>
 
             <Col span={24}>
@@ -90,7 +94,7 @@ const Home = () => {
             <Col span={24}>
               <div className='my-2.5'>
                 <h1 className='font-medium text-base'>Search todo</h1>
-                <SearchTodo handleClickSearch={handleSearch} />
+                <SearchTodo handleClickSearch={handleClickSearch} />
               </div>
             </Col>
 
@@ -108,8 +112,7 @@ const Home = () => {
                     <Option value='uncompleted'>Uncompleted</Option>
                   </Select>
                 </div>
-                <ListTodo onEdit={handleClickEdit} />
-                
+                <ListTodo onEdit={handleClickEdit} onCheck={handleClickCheck} />
               </div>
             </Col>
           </Row>

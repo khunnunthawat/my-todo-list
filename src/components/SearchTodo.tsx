@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Row, Col, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 // const { Search } = Input;
 
@@ -9,7 +9,7 @@ interface TodoAddprops {
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
-const SearchTodo: React.FC<TodoAddprops> = ({ handleClickSearch }) => {
+export const SearchTodo: React.FC<TodoAddprops> = ({ handleClickSearch }) => {
   const [form] = Form.useForm();
 
   const onSearch = (values: {title: string}) => {
@@ -29,5 +29,3 @@ const SearchTodo: React.FC<TodoAddprops> = ({ handleClickSearch }) => {
     </>
   );
 };
-
-export default SearchTodo;

@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
-
-const { Search } = Input;
 interface TodoAddprops {
   handleClickAdd: (value: string) => void;
 }
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
-const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
+export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
   const [form] = Form.useForm();
 
   const onSubmit = (values: { title: string }) => {
@@ -46,8 +44,6 @@ const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
     </>
   );
 };
-
-export default AddTodo;
 
 {/* <Row gutter={[8, 8]}>
   <Col span={12} />
