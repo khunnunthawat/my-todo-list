@@ -15,3 +15,13 @@ export const editState = atom({
   key: 'edit',
   default: false,
 });
+
+export const slectState = atom({
+  key: 'slect',
+  default: '',
+});
+
+export const searchState = atom<string>({
+  key: 'search',
+  default: '',
+});

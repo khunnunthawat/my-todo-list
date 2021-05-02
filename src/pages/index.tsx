@@ -1,13 +1,13 @@
 import Head from 'next/head';
-import { Layout, Row, Col, Card, PageHeader } from 'antd';
+import { Layout, Row, Col, Card, PageHeader, Select } from 'antd';
 import React, { useState } from 'react';
 import AddTodo from '@/components/AddTodo';
 import SearchTodo from '@/components/SearchTodo';
 import ListTodo from '@/components/ListTodo';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { todoState } from '@/components/recoil/atom';
-import { totalState } from '@/components/recoil/selector';
+import { todoState, slectState, searchState } from '@/components/recoil/atom';
+import { totalState, todoSearch } from '@/components/recoil/selector';
 import _ from 'lodash';
 // interface Todoprops {
 //   id: number,
@@ -21,6 +21,12 @@ const Home = () => {
   // const [todo, setTodo] = useState<Todoprops[]|[]>([]);
   const [todos, setTodos] = useRecoilState(todoState); //atom
   const totalTodos = useRecoilValue(totalState); //selector
+  const [select, setSelect] = useRecoilState(slectState);
+  const [search, setSearch] = useRecoilState(searchState);
+  const searchTodoList = useRecoilValue(todoSearch);
+
+
+  const { Option } = Select;
 
   const handleClickAdd = function (value: string) {
     const id = Math.floor(Math.random() * 1000) + 1;
@@ -48,6 +54,19 @@ const Home = () => {
     //   return data;
   };
 
+  function handleSearch(value: string) {
+    console.log("xxx" + value);
+    setSearch(value);
+    if (value === '') {
+      setSearch('');
+    }
+  }
+
+  function handleChange(value: string) {
+    console.log(`selected ${value}`);
+    setSelect(value);
+  }
+
   // console.log(todos);
 
   return (
@@ -72,14 +91,26 @@ const Home = () => {
             <Col span={24}>
               <div className='my-2.5'>
                 <h1 className='font-medium text-base'>Search todo</h1>
-                <SearchTodo handleClickAdd={handleClickAdd} />
+                <SearchTodo handleClickSearch={handleSearch} />
               </div>
             </Col>
 
             <Col span={24}>
               <div className='my-2.5'>
                 <h1 className='font-medium text-base'>Todo List</h1>
+                <div className='my-2.5'>
+                  <Select
+                    defaultValue='all'
+                    style={{ width: 140 }}
+                    onChange={handleChange}
+                  >
+                    <Option value='all'>All</Option>
+                    <Option value='completed'>Completed</Option>
+                    <Option value='uncompleted'>Uncompleted</Option>
+                  </Select>
+                </div>
                 <ListTodo onEdit={handleClickEdit} />
+                
               </div>
             </Col>
           </Row>

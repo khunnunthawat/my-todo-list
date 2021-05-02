@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { todoState } from './atom';
+import { todoState, searchState } from './atom';
 
 export const totalState = selector({
   key: 'total',
@@ -15,6 +15,22 @@ export const totalState = selector({
       notCompleted: 2,
       search: 'dd',
     };
+  },
+});
+
+export const todoSearch = selector({
+  key: 'searchtodo',
+  get: ({ get }) => {
+    const todoList = get(todoState);
+    const todoSearch = get(searchState);
+    let searchTodo;
+    if (todoSearch !== '') {
+      searchTodo = todoList.filter((todo) => {
+        return todo.value.includes(todoSearch); // includes คำไหนที่ค้นหาจะนำมาโชว์
+      });
+    }
+    return searchTodo;
+    // return JSON.stringify(searchTodo);
   },
 });
 
