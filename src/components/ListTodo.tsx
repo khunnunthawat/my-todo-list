@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Card, Button, Modal, Form, Input } from 'antd';
 import {
   DeleteTwoTone,
   EditTwoTone,
-  CheckCircleTwoTone,
   CheckCircleOutlined,
 } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
@@ -39,36 +38,37 @@ const ListTodo = ({ onEdit }: any) => {
       {todos.map((todo: TodoProps) => {
         return (
           <Modal
-              key={todo.id}
-              title='Edit Todo'
-              visible={modalEdit}
-              onCancel={handleClickCancel}
-              footer={[
-                <Button
-                  form='myForm'
-                  type='primary'
-                  key='submit'
-                  htmlType='submit'
-                >
-                  Add
-                </Button>,
-              ]}
-            >
-              <Form
-                onFinish={handleClickEdit}
-                form={form}
-                id='myForm'
-                layout='vertical'
-                initialValues={{ remember: todo.value }}
+            key={todo.id}
+            title='Edit Todo'
+            visible={modalEdit}
+            onCancel={handleClickCancel}
+            footer={[
+              <Button
+                form='myForm'
+                type='primary'
+                key='submit'
+                htmlType='submit'
               >
-                <Form.Item name='id'>
-                  <Input type='hidden' />
-                </Form.Item>
+                Edit
+              </Button>,
+            ]}
+          >
+            <Form
+              onFinish={handleClickEdit}
+              form={form}
+              id='myForm'
+              layout='vertical'
+              initialValues={{ remember: todo.value }}
+              name='id'
+            >
+              <Form.Item name='id'>
+                <Input type='hidden' />
                 <Form.Item name='title'>
-                  <Input placeholder='Edit text todo' />
+                  <Input className='px-2.5 py-1 border focus:outline-none rounded-md' size='middle' placeholder='Edit text todo' />
                 </Form.Item>
-              </Form>
-            </Modal>
+              </Form.Item>
+            </Form>
+          </Modal>
         );
       })}
 
