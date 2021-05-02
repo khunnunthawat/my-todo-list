@@ -54,13 +54,8 @@ const Home = () => {
       </Head>
       <Layout className='layout'>
         <Content style={{ background: '#ffffff' }}>
-          <Row
-            justify='center'
-            align='middle'
-            gutter={[0, 20]}
-            className='my-2'
-          >
-            <Col span={24}>
+          <Row justify='center' align='middle' gutter={[0, 20]}>
+            <Col>
               <PageHeader title='Daytech Todo List' />
             </Col>
 

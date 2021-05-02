@@ -83,11 +83,11 @@ const ListTodo = ({ onEdit }: any) => {
                   layout='vertical'
                   initialValues={{ remember: todo.value }}
                 >
-                  <Form.Item label=' ' name='title'>
-                    <Input placeholder='Enter text' />
-                  </Form.Item>
                   <Form.Item name='id'>
-                    <Input placeholder='Enter text' type='hidden' />
+                    <Input type='hidden' />
+                  </Form.Item>
+                  <Form.Item name='title'>
+                    <Input placeholder='Edit text todo' />
                   </Form.Item>
                 </Form>
               </Modal>
