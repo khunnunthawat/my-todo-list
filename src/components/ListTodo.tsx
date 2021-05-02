@@ -47,7 +47,6 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
 
   const handleCheck = (todo: TodoProps) => {
     onCheck(todo);
-    console.log(todo);
   };
 
   return (
@@ -130,14 +129,7 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
                 ]}
               >
                 {/* <p>{todo.value}</p> */}
-                <div className='todo-item'>
-                  <Tag
-                    color={todo.status ? 'green' : 'red'}
-                    className='todo-tag'
-                  >
-                    {todo.value}
-                  </Tag>
-                </div>
+                <Tag color={todo.status ? 'green' : 'red'}>{todo.value}</Tag>
               </Card>
             </Col>
           </Row>
