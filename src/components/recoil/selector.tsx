@@ -1,5 +1,5 @@
-import { atom, selector } from 'recoil';
-import { todoState, searchState } from './atom';
+import { selector } from 'recoil';
+import { todoState, searchState, slectState } from './atom';
 
 export const totalState = selector({
   key: 'total',
@@ -23,15 +23,44 @@ export const todoSearchState = selector({
   get: ({ get }) => {
     const todoList = get(todoState);
     const todoSearch = get(searchState);
+    const selectStatus = get(slectState);
+
     let searchTodo = todoList;
     if (todoSearch !== '') {
       searchTodo = todoList.filter((todo) => {
         return todo.value.includes(todoSearch); // includes คำไหนที่ค้นหาจะนำมาโชว์
       });
     }
+    
+    if (selectStatus === 'completed') {
+      searchTodo = todoList.filter((todo) => {
+        return todo.status === true;
+      });
+    }
+
+    if (selectStatus === 'uncompleted') {
+      searchTodo = todoList.filter((todo) => {
+        return todo.status === false;
+      });
+    }
+
     return searchTodo;
     // return JSON.stringify(searchTodo);
   },
 });
 
   
+
+  // const filterHandler = () => {
+  //   switch (status) {
+  //     case 'completed':
+  //       setFilteredTodos(todos.filter((todo) => todo.completed === true));
+  //       break;
+  //     case 'uncompleted':
+  //       setFilteredTodos(todos.filter((todo) => todo.completed === false));
+  //       break;
+  //     default:
+  //       setFilteredTodos(todos);
+  //       break;
+  //   }
+  // };
