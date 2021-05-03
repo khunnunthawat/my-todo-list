@@ -14,13 +14,14 @@ import {
 import {
   DeleteTwoTone,
   EditTwoTone,
-  CheckOutlined,
-  CloseOutlined,
+  CheckSquareOutlined,
 } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, editState } from './recoil/atom';
 import { todoSearchState } from '@/components/recoil/selector';
+
+const { Meta } = Card;
 
 export const ListTodo = ({ onEdit, onCheck }: any) => {
   // const [todo, setTodo] = useState<Todoprops[] | []>([]);
@@ -47,6 +48,7 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
 
   const handleCheck = (todo: TodoProps) => {
     onCheck(todo);
+    console.log('handleCheck' + todo);
   };
 
   return (
@@ -77,7 +79,10 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
               initialValues={{ remember: todo.value }}
               name='id'
             >
-              <Form.Item name='title'>
+              <Form.Item
+                name='title'
+                rules={[{ required: true, message: 'This field is Todo' }]}
+              >
                 <Input
                   className='h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none'
                   size='middle'
@@ -99,10 +104,7 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
               <Card
                 style={{ width: 500, marginTop: 12 }}
                 actions={[
-                  <Tooltip
-                    title={todo.status ? 'Uncompleted' : 'Go completed'}
-                    key='check'
-                  >
+                  <Tooltip key='check' title={todo.status ? 'Uncompleted' : 'Completed'}>
                     <Switch
                       defaultChecked={todo.status}
                       onClick={() => handleCheck(todo)}

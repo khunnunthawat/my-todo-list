@@ -1,6 +1,6 @@
 export interface TodoProps {
   id: number;
-  status: boolean;
+  status?: boolean;
   value: string;
 }
 

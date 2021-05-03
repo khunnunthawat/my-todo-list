@@ -21,7 +21,7 @@ export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
         layout='horizontal'
         className='my-5 p-1.5'
       >
-        <Row gutter={20}>
+        <Row gutter={6}>
           <Col xs={24} sm={24} md={17} lg={19} xl={20}>
             <Form.Item
               name='title'

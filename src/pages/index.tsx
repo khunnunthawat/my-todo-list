@@ -20,7 +20,6 @@ const Home = () => {
   const [select, setSelect] = useRecoilState(slectState);
   const [search, setSearch] = useRecoilState(searchState);
 
-
   const { Option } = Select;
 
   const handleClickAdd = function (value: string) {
@@ -49,28 +48,28 @@ const Home = () => {
     if (value === '') {
       setSearch('');
     }
-  };
+  }
 
-    const handleClickCheck = (todo: TodoProps) => {
-      if (todos.length > 0) {
-        setTodos(
-          todos.map((item) => {
-            if (item.id === todo.id) {
-              return {
-                ...item,
-                completed: !item.status,
-              };
-            }
-            return item;
-          })
-        );
-      }
-    };
+  const handleClickCheck = (todo: TodoProps) => {
+    if (todos.length > 0) {
+      setTodos(
+        todos.map((item) => {
+          if (item.id === todo.id) {
+            return {
+              ...item,
+              completed: !item.status,
+            };
+          }
+          return item;
+        })
+      );
+    }
+  };
 
   function handleChange(value: string) {
     console.log(`selected ${value}`);
     setSelect(value);
-  };
+  }
 
   return (
     <>
@@ -128,17 +127,17 @@ export default Home;
 // Create a new todo
 // className='w-100 max-w-4xl mx-auto p-5'
 // className='w-full h-screen max-h-screen min-w-full'
-  // const handleClickCheck = (todo: TodoProps) => {
-  //   if (todos.length > 0) {
-  //     setTodos( todos.map((item) => {
-  //         if (item.id === todo.id) {
-  //           return {
-  //             ...item,
-  //             completed: !item.status,
-  //           };
-  //         }
-  //         return item;
-  //       })
-  //     );
-  //   }
-  // };
+// const handleClickCheck = (todo: TodoProps) => {
+//   if (todos.length > 0) {
+//     setTodos( todos.map((item) => {
+//         if (item.id === todo.id) {
+//           return {
+//             ...item,
+//             completed: !item.status,
+//           };
+//         }
+//         return item;
+//       })
+//     );
+//   }
+// };

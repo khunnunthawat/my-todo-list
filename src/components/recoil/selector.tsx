@@ -25,20 +25,22 @@ export const todoSearchState = selector({
     const todoSearch = get(searchState);
     const selectStatus = get(slectState);
 
+    console.log('slectState' + selectStatus);
+
     let searchTodo = todoList;
     if (todoSearch !== '') {
       searchTodo = todoList.filter((todo) => {
         return todo.value.includes(todoSearch); // includes คำไหนที่ค้นหาจะนำมาโชว์
       });
     }
-    
     if (selectStatus === 'completed') {
+      console.log('completed');
       searchTodo = todoList.filter((todo) => {
         return todo.status === true;
       });
     }
-
     if (selectStatus === 'uncompleted') {
+      console.log('uncompleted');
       searchTodo = todoList.filter((todo) => {
         return todo.status === false;
       });
@@ -49,18 +51,16 @@ export const todoSearchState = selector({
   },
 });
 
-  
-
-  // const filterHandler = () => {
-  //   switch (status) {
-  //     case 'completed':
-  //       setFilteredTodos(todos.filter((todo) => todo.completed === true));
-  //       break;
-  //     case 'uncompleted':
-  //       setFilteredTodos(todos.filter((todo) => todo.completed === false));
-  //       break;
-  //     default:
-  //       setFilteredTodos(todos);
-  //       break;
-  //   }
-  // };
+// const filterHandler = () => {
+//   switch (status) {
+//     case 'completed':
+//       setFilteredTodos(todos.filter((todo) => todo.completed === true));
+//       break;
+//     case 'uncompleted':
+//       setFilteredTodos(todos.filter((todo) => todo.completed === false));
+//       break;
+//     default:
+//       setFilteredTodos(todos);
+//       break;
+//   }
+// };
