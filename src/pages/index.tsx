@@ -1,5 +1,15 @@
 import Head from 'next/head';
-import { Layout, Row, Col, Card, Typography, Select } from 'antd';
+import {
+  Layout,
+  Row,
+  Col,
+  Card,
+  Typography,
+  Select,
+  Tooltip,
+  Button,
+} from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import { AddTodo } from '@/components/AddTodo';
 import { SearchTodo } from '@/components/SearchTodo';
@@ -64,6 +74,12 @@ const Home = () => {
         })
       );
     }
+    console.log(todo);
+  };
+
+  const handleClear = () => {
+    // clear all history
+    setTodos([]);
   };
 
   function handleChange(value: string) {
@@ -101,15 +117,24 @@ const Home = () => {
               <div className='my-2.5'>
                 <h1 className='font-medium text-base'>Todo List</h1>
                 <div className='my-2.5'>
-                  <Select
-                    defaultValue='all'
-                    style={{ width: 140 }}
-                    onChange={handleChange}
-                  >
-                    <Option value='all'>All</Option>
-                    <Option value='completed'>Completed</Option>
-                    <Option value='uncompleted'>Uncompleted</Option>
-                  </Select>
+                  <Row>
+                    <Col span={20}>
+                      <Select
+                        defaultValue='all'
+                        style={{ width: 140 }}
+                        onChange={handleChange}
+                      >
+                        <Option value='all'>All</Option>
+                        <Option value='completed'>Completed</Option>
+                        <Option value='uncompleted'>Uncompleted</Option>
+                      </Select>
+                    </Col>
+                    <Col span={4}>
+                      <Button type='default' onClick={() => handleClear()}>
+                        Clear
+                      </Button>
+                    </Col>
+                  </Row>
                 </div>
                 <ListTodo onEdit={handleClickEdit} onCheck={handleClickCheck} />
               </div>

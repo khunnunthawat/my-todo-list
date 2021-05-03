@@ -25,8 +25,6 @@ export const todoSearchState = selector({
     const todoSearch = get(searchState);
     const selectStatus = get(slectState);
 
-    console.log('slectState' + selectStatus);
-
     let searchTodo = todoList;
     if (todoSearch !== '') {
       searchTodo = todoList.filter((todo) => {
@@ -34,16 +32,16 @@ export const todoSearchState = selector({
       });
     }
     if (selectStatus === 'completed') {
-      console.log('completed');
       searchTodo = todoList.filter((todo) => {
         return todo.completed === true;
       });
+      console.log('completed');
     }
     if (selectStatus === 'uncompleted') {
-      console.log('uncompleted');
       searchTodo = todoList.filter((todo) => {
         return todo.completed === false;
       });
+      console.log('uncompleted');
     }
 
     return searchTodo;
