@@ -104,9 +104,12 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
               <Card
                 style={{ width: 500, marginTop: 12 }}
                 actions={[
-                  <Tooltip key='check' title={todo.status ? 'Uncompleted' : 'Completed'}>
+                  <Tooltip
+                    key='check'
+                    title={todo.completed ? 'Uncompleted' : 'Completed'}
+                  >
                     <Switch
-                      defaultChecked={todo.status}
+                      defaultChecked={todo.completed}
                       onClick={() => handleCheck(todo)}
                     />
                     {/* <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li> */}
@@ -134,7 +137,7 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
                 ]}
               >
                 {/* <p>{todo.value}</p> */}
-                <Tag color={todo.status ? 'green' : 'red'}>{todo.value}</Tag>
+                <Tag color={todo.completed ? 'green' : 'red'}>{todo.value}</Tag>
               </Card>
             </Col>
           </Row>

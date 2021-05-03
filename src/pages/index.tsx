@@ -26,7 +26,7 @@ const Home = () => {
     const id = Math.floor(Math.random() * 1000) + 1;
     const data = {
       id,
-      status: false,
+      completed: false,
       value,
     };
     setTodos([...todos, data]);
@@ -57,7 +57,7 @@ const Home = () => {
           if (item.id === todo.id) {
             return {
               ...item,
-              completed: !item.status,
+              completed: !item.completed,
             };
           }
           return item;
@@ -67,7 +67,7 @@ const Home = () => {
   };
 
   function handleChange(value: string) {
-    console.log(`selected ${value}`);
+    console.log(`selected : ${value}`);
     setSelect(value);
   }
 

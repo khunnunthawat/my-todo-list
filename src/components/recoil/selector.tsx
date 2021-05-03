@@ -36,13 +36,13 @@ export const todoSearchState = selector({
     if (selectStatus === 'completed') {
       console.log('completed');
       searchTodo = todoList.filter((todo) => {
-        return todo.status === true;
+        return todo.completed === true;
       });
     }
     if (selectStatus === 'uncompleted') {
       console.log('uncompleted');
       searchTodo = todoList.filter((todo) => {
-        return todo.status === false;
+        return todo.completed === false;
       });
     }
 
