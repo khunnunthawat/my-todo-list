@@ -89,7 +89,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Daytech Todo List</title>
+        <title>Todo List</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout className='layout'>
