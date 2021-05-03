@@ -26,7 +26,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/AddTodo.tsx", "src/components/Todo.tsrc/components/types/ListTodo.tsxdo.tsx", "src/pages/api/hello.ts", "src/pages/_app.tsx", "src/pages/index.tsx"  ],
+, "src/components/AddTodo.tsx", "src/components/Todo.tsrc/components/types/ListTodo.tsxdo.tsx", "src/pages/api/hello.tsx", "src/pages/_app.tsx", "src/pages/index.tsx"  ],
   "exclude": [
     "node_modules"
   ]
