@@ -6,7 +6,6 @@ import {
   Card,
   Typography,
   Select,
-  Tooltip,
   Button,
 } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
@@ -21,7 +20,7 @@ import { totalState } from '@/components/recoil/selector';
 import _ from 'lodash';
 
 const { Content } = Layout;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Home = () => {
   // const [todo, setTodo] = useState<Todoprops[]|[]>([]);
@@ -118,20 +117,38 @@ const Home = () => {
                 <h1 className='font-medium text-base'>Todo List</h1>
                 <div className='my-2.5'>
                   <Row>
-                    <Col span={20}>
+                    <Col span={6}>
                       <Select
                         defaultValue='all'
-                        style={{ width: 140 }}
+                        style={{ width: 125 }}
                         onChange={handleChange}
+                        size='small'
                       >
                         <Option value='all'>All</Option>
                         <Option value='completed'>Completed</Option>
                         <Option value='uncompleted'>Uncompleted</Option>
                       </Select>
                     </Col>
-                    <Col span={4}>
-                      <Button type='default' onClick={() => handleClear()}>
-                        Clear
+                    <Col span={16}>
+                      <Button size='small'>
+                        Total All : {totalTodos.totalTodo}
+                      </Button>
+                      <Button size='small'>
+                        Total Completed : {totalTodos.completed}
+                      </Button>
+                      <Button size='small'>
+                        Total Uncompleted : {totalTodos.uncompleted}
+                      </Button>
+                    </Col>
+                    <Col span={2}>
+                      <Button
+                        size='small'
+                        type='default'
+                        onClick={() => handleClear()}
+                      >
+                        <Text onClick={() => handleClear()} type='danger'>
+                          Clear
+                        </Text>
                       </Button>
                     </Col>
                   </Row>
