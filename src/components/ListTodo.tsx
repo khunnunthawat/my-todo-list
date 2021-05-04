@@ -14,7 +14,6 @@ import {
 import {
   DeleteTwoTone,
   EditTwoTone,
-  CheckSquareOutlined,
 } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';

@@ -38,7 +38,7 @@ const Home = () => {
       completed: false,
       value,
     };
-    setTodos([...todos, data]);
+    setTodos([data, ...todos]);
   };
 
   const handleClickEdit = (newId: number, newValue: string) => {
