@@ -109,10 +109,6 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
                     />
                     {/* <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li> */}
                   </Tooltip>,
-                  // <CheckCircleOutlined
-                  //   key='check'
-                  //   onClick={() => handleCheck(todo)}
-                  // />,
                   <EditTwoTone
                     key='edit'
                     onClick={() => {
@@ -141,9 +137,3 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
     </>
   );
 };
-
-{
-  /* <button className='px-4 py-1 text-white bg-blue-600 hover:bg-gray-900 focus:outline-none rounded-md'>
-  BTN
-</button>; */
-}
