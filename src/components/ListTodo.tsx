@@ -20,8 +20,6 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, editState } from './recoil/atom';
 import { todoSearchState } from '@/components/recoil/selector';
 
-const { Meta } = Card;
-
 export const ListTodo = ({ onEdit, onCheck }: any) => {
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useRecoilState(editState);
@@ -41,7 +39,6 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
   const handleClickEdit = (values: { title: string; id: number }) => {
     setModalEdit(false);
     onEdit(values.id, values.title);
-    // console.log(values.id + values.title);
   };
 
   const handleCheck = (todo: TodoProps) => {

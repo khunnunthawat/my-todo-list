@@ -56,7 +56,7 @@ const Home = () => {
     if (value === '') {
       setSearch('');
     }
-  }
+  };
 
   const handleClickCheck = (todo: TodoProps) => {
     if (todos.length > 0) {
@@ -72,7 +72,6 @@ const Home = () => {
         })
       );
     }
-    console.log(todo);
   };
 
   const handleClear = () => {
@@ -83,7 +82,7 @@ const Home = () => {
   const handleChange = (value: string) => {
     console.log(`selected : ${value}`);
     setSelect(value);
-  }
+  };
 
   return (
     <>
