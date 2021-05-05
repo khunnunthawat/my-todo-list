@@ -20,7 +20,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, editState } from './recoil/atom';
 import { todoSearchState } from '@/components/recoil/selector';
 
-const ListTodo = ({ onEdit, onCheck }: any) => {
+export const ListTodo: React.FC = ({ onEdit, onCheck }: any) => {
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useRecoilState(editState);
   const [form] = Form.useForm();
@@ -135,5 +135,3 @@ const ListTodo = ({ onEdit, onCheck }: any) => {
     </>
   );
 };
-
-export default ListTodo;
