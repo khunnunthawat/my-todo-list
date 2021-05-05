@@ -65,10 +65,3 @@ export const todoSearchState = selector({
 //       break;
 //   }
 // }
-//  total: todoList.length,
-//       completed: todoList
-//         ? todoList.filter((todo) => todo.completed).length
-//         : 0,
-//       uncompleted: todoList
-//         ? todoList.filter((todo) => todo.completed).length
-//         : 0,

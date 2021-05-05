@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
-
-// const { Search } = Input;
-
 interface TodoAddprops {
   handleClickSearch: (value: string) => void;
 }
-
-type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 export const SearchTodo: React.FC<TodoAddprops> = ({ handleClickSearch }) => {
   const [form] = Form.useForm();

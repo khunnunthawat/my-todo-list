@@ -23,7 +23,6 @@ import { todoSearchState } from '@/components/recoil/selector';
 const { Meta } = Card;
 
 export const ListTodo = ({ onEdit, onCheck }: any) => {
-  // const [todo, setTodo] = useState<Todoprops[] | []>([]);
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useRecoilState(editState);
   const [form] = Form.useForm();
@@ -33,7 +32,7 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
     setModalEdit(false);
   };
 
-  const handleClickDelete = function (todo: TodoProps) {
+  const handleClickDelete = (todo: TodoProps) => {
     if (todos.length > 0) {
       setTodos(todos.filter((todoList) => todoList.id !== todo.id));
     }

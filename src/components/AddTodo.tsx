@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
 interface TodoAddprops {
   handleClickAdd: (value: string) => void;
 }
-
-type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
   const [form] = Form.useForm();
@@ -44,8 +42,3 @@ export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
     </>
   );
 };
-
-{/* <Row gutter={[8, 8]}>
-  <Col span={12} />
-  <Col span={12} />
-</Row>; */}

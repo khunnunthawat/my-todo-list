@@ -8,8 +8,7 @@ import {
   Select,
   Button,
 } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { AddTodo } from '@/components/AddTodo';
 import { SearchTodo } from '@/components/SearchTodo';
 import { ListTodo } from '@/components/ListTodo';
@@ -31,7 +30,7 @@ const Home = () => {
 
   const { Option } = Select;
 
-  const handleClickAdd = function (value: string) {
+  const handleClickAdd = (value: string) => {
     const id = Math.floor(Math.random() * 1000) + 1;
     const data = {
       id,
@@ -52,7 +51,7 @@ const Home = () => {
     setTodos(newData);
   };
 
-  function handleClickSearch(value: string) {
+  const handleClickSearch = (value: string) => {
     setSearch(value);
     if (value === '') {
       setSearch('');
@@ -81,7 +80,7 @@ const Home = () => {
     setTodos([]);
   };
 
-  function handleChange(value: string) {
+  const handleChange = (value: string) => {
     console.log(`selected : ${value}`);
     setSelect(value);
   }
@@ -164,22 +163,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// className='flex flex-col items-center justify-center py-2'
-// Create a new todo
-// className='w-100 max-w-4xl mx-auto p-5'
-// className='w-full h-screen max-h-screen min-w-full'
-// const handleClickCheck = (todo: TodoProps) => {
-//   if (todos.length > 0) {
-//     setTodos( todos.map((item) => {
-//         if (item.id === todo.id) {
-//           return {
-//             ...item,
-//             completed: !item.status,
-//           };
-//         }
-//         return item;
-//       })
-//     );
-//   }
-// };
