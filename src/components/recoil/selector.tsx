@@ -12,12 +12,9 @@ export const totalState = selector({
       return data.completed === false;
     });
     return {
-      // totalTodo
       totalTodo: totalTodo.length,
       completed: completed.length,
       uncompleted: uncompleted.length
-      // completed: 1,
-      // uncompleted: 2,
     };
   },
 });
@@ -48,20 +45,5 @@ export const todoSearchState = selector({
       console.log('uncompleted');
     }
     return searchTodo;
-    // return JSON.stringify(searchTodo);
   },
 });
-
-// const filterHandler = () => {
-//   switch (status) {
-//     case 'completed':
-//       setFilteredTodos(todos.filter((todo) => todo.completed === true));
-//       break;
-//     case 'uncompleted':
-//       setFilteredTodos(todos.filter((todo) => todo.completed === false));
-//       break;
-//     default:
-//       setFilteredTodos(todos);
-//       break;
-//   }
-// }

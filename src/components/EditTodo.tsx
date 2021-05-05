@@ -15,7 +15,6 @@ export const EditTodo = ({ todo, onEdit }: EditProps) => {
   const handleClickEdit = (values: { title: string; id: number }) => {
     setModalEdit(false);
     onEdit(values.id, values.title);
-    // console.log(values.id + values.title);
   };
 
   return (

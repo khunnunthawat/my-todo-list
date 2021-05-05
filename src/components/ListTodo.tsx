@@ -107,7 +107,6 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
                       defaultChecked={todo.completed}
                       onClick={() => handleCheck(todo)}
                     />
-                    {/* <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{text}</li> */}
                   </Tooltip>,
                   <EditTwoTone
                     key='edit'
@@ -127,7 +126,6 @@ export const ListTodo = ({ onEdit, onCheck }: any) => {
                   />,
                 ]}
               >
-                {/* <p>{todo.value}</p> */}
                 <Tag color={todo.completed ? 'green' : 'red'}>{todo.value}</Tag>
               </Card>
             </Col>
