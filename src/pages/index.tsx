@@ -1,13 +1,5 @@
 import Head from 'next/head';
-import {
-  Layout,
-  Row,
-  Col,
-  Card,
-  Typography,
-  Select,
-  Button,
-} from 'antd';
+import { Layout, Row, Col, Card, Typography, Select, Button } from 'antd';
 import React from 'react';
 import { AddTodo } from '@/components/AddTodo';
 import { SearchTodo } from '@/components/SearchTodo';
@@ -22,7 +14,6 @@ const { Content } = Layout;
 const { Title, Text } = Typography;
 
 const Home = () => {
-  // const [todo, setTodo] = useState<Todoprops[]|[]>([]);
   const [todos, setTodos] = useRecoilState(todoState); //atom
   const totalTodos = useRecoilValue(totalState); //selector
   const [select, setSelect] = useRecoilState(slectState);
@@ -75,12 +66,10 @@ const Home = () => {
   };
 
   const handleClear = () => {
-    // clear all history
     setTodos([]);
   };
 
   const handleChange = (value: string) => {
-    console.log(`selected : ${value}`);
     setSelect(value);
   };
 
@@ -151,7 +140,10 @@ const Home = () => {
                     </Col>
                   </Row>
                 </div>
-                <ListTodo onEditTodo={handleClickEdit} onCheck={handleClickCheck} />
+                <ListTodo
+                  onEditTodo={handleClickEdit}
+                  onCheck={handleClickCheck}
+                />
               </div>
             </Col>
           </Row>

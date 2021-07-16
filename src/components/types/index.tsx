@@ -7,3 +7,11 @@ export interface EditProps {
   todo: TodoProps;
   onEdit: (newId: number, newValue: string) => void;
 }
+
+export interface AddTodoProps {
+  handleClickAdd: (value: string) => void;
+}
+
+export interface SearchTodoProps {
+  handleClickSearch: (value: string) => void;
+}

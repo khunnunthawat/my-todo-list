@@ -14,7 +14,7 @@ export const totalState = selector({
     return {
       totalTodo: totalTodo.length,
       completed: completed.length,
-      uncompleted: uncompleted.length
+      uncompleted: uncompleted.length,
     };
   },
 });

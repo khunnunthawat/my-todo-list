@@ -1,10 +1,8 @@
 import React from 'react';
 import { Form, Input, Button, Row, Col } from 'antd';
-interface TodoAddprops {
-  handleClickAdd: (value: string) => void;
-}
+import { AddTodoProps } from './types/index';
 
-export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
+export const AddTodo: React.FC<AddTodoProps> = ({ handleClickAdd }) => {
   const [form] = Form.useForm();
 
   const onSubmit = (values: { title: string }) => {
@@ -29,11 +27,7 @@ export const AddTodo: React.FC<TodoAddprops> = ({ handleClickAdd }) => {
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={7} lg={5} xl={4}>
-            <Button
-              type='primary'
-              htmlType='submit'
-              block
-            >
+            <Button type='primary' htmlType='submit' block>
               Add todo
             </Button>
           </Col>

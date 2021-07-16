@@ -8,7 +8,7 @@ export const nameState = atom({
 
 export const todoState = atom<TodoProps[]>({
   key: 'todo',
-  default: []
+  default: [],
 });
 
 export const editState = atom({
