@@ -11,16 +11,13 @@ import {
   Switch,
   Tag,
 } from 'antd';
-import {
-  DeleteTwoTone,
-  EditTwoTone,
-} from '@ant-design/icons';
+import { DeleteTwoTone, EditTwoTone } from '@ant-design/icons';
 import { TodoProps } from '@/components/types/index';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { todoState, editState } from './recoil/atom';
 import { todoSearchState } from '@/components/recoil/selector';
 
-export const ListTodo: React.FC = ({ onEdit, onCheck }: any) => {
+export const ListTodo: React.FC<any> = ({ onEditTodo, onCheck }: any) => {
   const [todos, setTodos] = useRecoilState(todoState);
   const [modalEdit, setModalEdit] = useRecoilState(editState);
   const [form] = Form.useForm();
@@ -38,7 +35,7 @@ export const ListTodo: React.FC = ({ onEdit, onCheck }: any) => {
 
   const handleClickEdit = (values: { title: string; id: number }) => {
     setModalEdit(false);
-    onEdit(values.id, values.title);
+    onEditTodo(values.id, values.title);
   };
 
   const handleCheck = (todo: TodoProps) => {

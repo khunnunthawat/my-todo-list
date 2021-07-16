@@ -151,7 +151,7 @@ const Home = () => {
                     </Col>
                   </Row>
                 </div>
-                <ListTodo onEdit={handleClickEdit} onCheck={handleClickCheck} />
+                <ListTodo onEditTodo={handleClickEdit} onCheck={handleClickCheck} />
               </div>
             </Col>
           </Row>
