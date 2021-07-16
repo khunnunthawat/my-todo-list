@@ -23,7 +23,7 @@ export const AddTodo: React.FC<AddTodoProps> = ({ handleClickAdd }) => {
               name='title'
               rules={[{ required: true, message: 'This field is Todo' }]}
             >
-              <Input placeholder='Input todo list...' />
+              <Input placeholder='Input todo list...' allowClear />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={7} lg={5} xl={4}>

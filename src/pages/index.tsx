@@ -76,14 +76,14 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Todo List</title>
+        <title>Todo List Antd & Tailwind</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Layout className='layout'>
         <Content style={{ background: '#ffffff' }}>
           <Row justify='center' align='middle' gutter={[0, 20]}>
             <Col>
-              <Title level={4}>Daytech Todo List Title</Title>
+              <Title level={4}>Eiffel Todo List Title</Title>
             </Col>
 
             <Col span={24}>
@@ -104,7 +104,7 @@ const Home = () => {
                 <h1 className='font-medium text-base'>Todo List</h1>
                 <div className='my-2.5'>
                   <Row>
-                    <Col span={6}>
+                    <Col span={20}>
                       <Select
                         defaultValue='all'
                         style={{ width: 125 }}
@@ -116,18 +116,7 @@ const Home = () => {
                         <Option value='uncompleted'>Uncompleted</Option>
                       </Select>
                     </Col>
-                    <Col span={16}>
-                      <Button size='small'>
-                        Total All : {totalTodos.totalTodo}
-                      </Button>
-                      <Button size='small'>
-                        Total Completed : {totalTodos.completed}
-                      </Button>
-                      <Button size='small'>
-                        Total Uncompleted : {totalTodos.uncompleted}
-                      </Button>
-                    </Col>
-                    <Col span={2}>
+                    <Col span={4}>
                       <Button
                         size='small'
                         type='default'
@@ -140,11 +129,24 @@ const Home = () => {
                     </Col>
                   </Row>
                 </div>
-                <ListTodo
-                  onEditTodo={handleClickEdit}
-                  onCheck={handleClickCheck}
-                />
               </div>
+            </Col>
+
+            <Col span={16}>
+              <Button size='small'>Total All : {totalTodos.totalTodo}</Button>
+              <Button size='small'>
+                Total Completed : {totalTodos.completed}
+              </Button>
+              <Button size='small'>
+                Total Uncompleted : {totalTodos.uncompleted}
+              </Button>
+            </Col>
+
+            <Col span={24}>
+              <ListTodo
+                onEditTodo={handleClickEdit}
+                onCheck={handleClickCheck}
+              />
             </Col>
           </Row>
         </Content>
