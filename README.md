@@ -1,4 +1,7 @@
 Demo : [TodoList](https://my-todo-typescript.vercel.app/)
+
+<img width="816" alt="Screen Shot 2021-07-17 at 4 08 15 AM" src="https://user-images.githubusercontent.com/68588944/126008722-f681f88b-4052-4415-840d-60c90ee78588.png">
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2.1) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
